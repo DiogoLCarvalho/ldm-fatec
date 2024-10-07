@@ -16,6 +16,14 @@ const db = getFirestore()
 
 app.engine("handlebars", handlebars({ defaultLayout: 'main' }));
 app.set("view engine", "handlebars");
+app.engine('handlebars', handlebars({ 
+    helpers: {
+        eq: function (v1, v2) {
+          return v1 === v2
+        }
+    },  
+    defaultLayout: 'main' 
+}))
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
